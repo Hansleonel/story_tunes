@@ -1,0 +1,160 @@
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+}
+
+.track-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.track-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.track-details {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.track-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.track-artists,
+.track-album {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.track-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+
+.track-button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.track-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.track-button i {
+  margin-right: 8px;
+}
+
+#story-container {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+.preview-container {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos horizontalmente */
+}
+
+.progress-container {
+  width: 100%;
+  background-color: #4d4d4d;
+  border-radius: 30px;
+  margin: 10px 0;
+  height: 6px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background-color: var(--button-bg);
+  border-radius: 30px;
+  transition: width 0.1s linear;
+}
+
+#time-display {
+  font-size: 0.9em;
+  color: var(--text-color);
+  text-align: center;
+  margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+  .track-container {
+    padding: 20px;
+  }
+
+  .track-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .track-name {
+    font-size: 2rem;
+  }
+
+  .track-artists,
+  .track-album {
+    font-size: 1rem;
+  }
+
+  .track-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Nuevo estilo específico para el botón "Generar Historia" */
+.generate-story-button {
+  background-color: #9b51e0;
+  color: white;
+}
+
+.generate-story-button:hover {
+  background-color: #a461d8;
+}
