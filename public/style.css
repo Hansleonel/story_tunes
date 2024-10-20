@@ -250,3 +250,156 @@ h1 {
 #top-tracks img {
   margin-right: 10px;
 }
+
+/* Estilos adicionales para la landing page */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero {
+  padding: 120px 0 60px;
+  background-color: var(--bg-alt-color);
+}
+
+.hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 50%;
+}
+
+.hero-image {
+  flex: 1;
+  max-width: 50%;
+  text-align: right;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.benefits {
+  padding: 60px 0;
+  background-color: var(--bg-color);
+}
+
+.benefits .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.benefit {
+  flex: 1;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.benefit img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+}
+
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 40px 0;
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .hero .container,
+  .benefits .container,
+  footer .container {
+    flex-direction: column;
+  }
+
+  .hero-content,
+  .hero-image {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    margin-top: 30px;
+  }
+
+  .benefit {
+    margin-bottom: 40px;
+  }
+}
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+
+.spotify-connect-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 500px;
+  padding: 12px 24px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.spotify-connect-button:hover {
+  background-color: #1ed760;
+  transform: scale(1.05);
+}
+
+.spotify-connect-button:active {
+  transform: scale(0.95);
+}
+
+.spotify-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  fill: currentColor;
+}
+
+/* Ajuste para modo oscuro */
+.dark-mode .spotify-connect-button {
+  background-color: #1db954;
+  color: white;
+}
+
+.dark-mode .spotify-connect-button:hover {
+  background-color: #1ed760;
+}
+
+.hero-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.hero-description {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}

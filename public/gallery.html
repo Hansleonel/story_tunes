@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StoryPad | Tu Galería de Canciones</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="dark-mode">
+    <div id="app">
+      <header>
+        <div class="container">
+          <img src="assets/images/logo.svg" alt="StoryPad Logo" class="logo" />
+          <button id="theme-toggle" aria-label="Cambiar tema">🌓</button>
+        </div>
+      </header>
+
+      <main>
+        <div id="user-info">
+          <h2>Tu Información</h2>
+          <p id="user-name"></p>
+          <p id="user-email"></p>
+          <h2>Tus Canciones Más Escuchadas</h2>
+          <div id="top-tracks"></div>
+        </div>
+      </main>
+
+      <footer>
+        <div class="container">
+          <nav>
+            <a href="#">Términos y Condiciones</a>
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Contacto</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+    <script src="gallery.js"></script>
+  </body>
+</html>
