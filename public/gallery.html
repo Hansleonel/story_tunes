@@ -53,6 +53,36 @@
           transform: rotate(360deg);
         }
       }
+
+      @media screen and (max-width: 768px) {
+        .book {
+          position: relative;
+          overflow: visible;
+        }
+        .book-info {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-color: rgba(0, 0, 0, 0.7);
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          z-index: 10;
+        }
+        .book-info p {
+          margin: 0;
+          text-align: center;
+          color: white;
+        }
+        .book-info .generate-story {
+          margin-top: 5px;
+        }
+        .book-cover {
+          margin-bottom: 60px; /* Ajusta este valor según la altura de tu .book-info */
+        }
+      }
     </style>
   </head>
   <body class="dark-mode">
