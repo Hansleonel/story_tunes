@@ -482,3 +482,143 @@ footer .container {
     margin: 0 10px;
   }
 }
+
+/* Estilos para la página de galería */
+.gallery-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.user-info-text {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+#top-tracks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.book {
+  width: 150px;
+  height: 200px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.book-cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.book:hover .book-cover {
+  transform: rotateY(-30deg);
+}
+
+.book-front,
+.book-back,
+.book-spine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.book-front {
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 5px 5px 20px var(--book-cover-shadow);
+}
+
+.book-back {
+  background-color: var(--card-bg);
+  transform: rotateY(180deg);
+  border-radius: 2px 0 0 2px;
+}
+
+.book-spine {
+  width: 10px;
+  left: -10px;
+  background-color: var(--book-spine-color);
+  transform: rotateY(-90deg);
+  transform-origin: right;
+}
+
+.book-info {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  width: 100%;
+  background-color: var(--card-bg);
+  padding: 10px;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-color);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 2px 4px var(--book-cover-shadow);
+  border-radius: 0 0 4px 4px;
+}
+
+.book:hover .book-info {
+  opacity: 1;
+}
+
+.book-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.book-info p {
+  margin: 2px 0;
+  color: var(--text-color);
+}
+
+.generate-story {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-top: 8px;
+  transition: background-color 0.3s, transform 0.1s;
+  width: 80%;
+  max-width: 150px;
+}
+
+.generate-story:hover {
+  background-color: #1ed760;
+  transform: scale(1.05);
+}
