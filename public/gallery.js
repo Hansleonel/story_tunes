@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const userEmail = document.getElementById('user-email');
     const topTracks = document.getElementById('top-tracks');
     const themeToggle = document.getElementById('theme-toggle');
+    const loadingOverlay = document.getElementById('loading-overlay');
+    const loadingText = document.getElementById('loading-text');
 
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
@@ -22,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (accessToken) {
         console.log('Access token found:', accessToken);
+        showLoading('Cargando tus datos...');
 
         console.log('Fetching user info from server');
         fetch(`/user-info?access_token=${accessToken}`)
@@ -35,10 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 console.log('User data received:', data);
                 displayUserInfo(data);
+                hideLoading(); // Ocultar el loading después de mostrar la información
             })
             .catch(error => {
                 console.error('Error fetching user data:', error);
                 userInfo.textContent = 'Error loading user data. Please try again.';
+                hideLoading(); // Ocultar el loading en caso de error
             });
     } else {
         console.log('No access token found');
@@ -82,5 +87,26 @@ document.addEventListener('DOMContentLoaded', () => {
     function generateStory(trackId) {
         console.log(`Redirigiendo a la página de la canción con ID: ${trackId}`);
         window.location.href = `/track.html?id=${trackId}&access_token=${accessToken}`;
+    }
+
+    function showLoading(message) {
+        loadingText.textContent = message;
+        loadingOverlay.style.display = 'flex';
+    }
+
+    function hideLoading() {
+        loadingOverlay.style.display = 'none';
+    }
+
+    async function loadUserInfo() {
+        showLoading('Cargando tus datos...');
+        // ... código para cargar la información del usuario ...
+        hideLoading();
+    }
+
+    async function loadTopTracks() {
+        showLoading('Cargando tus canciones más escuchadas...');
+        // ... código para cargar las canciones más escuchadas ...
+        hideLoading();
     }
 });
