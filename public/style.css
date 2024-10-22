@@ -403,3 +403,82 @@ footer .container {
   margin-bottom: 2rem;
   color: var(--text-color);
 }
+
+.site-footer {
+  background-color: #1a1a1a;
+  color: #cccccc;
+  padding: 40px 0 20px;
+  font-family: "Open Sans", sans-serif;
+  position: relative;
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #333333;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.footer-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 20px;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #1db954;
+}
+
+.social-icons a {
+  color: #ffffff;
+  font-size: 20px;
+  margin-left: 15px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #1db954;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-nav {
+    margin-bottom: 20px;
+  }
+
+  .footer-nav a {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .social-icons {
+    margin-top: 20px;
+  }
+
+  .social-icons a {
+    margin: 0 10px;
+  }
+}

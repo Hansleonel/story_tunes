@@ -4,35 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      StoryPad | Convierte tus canciones favoritas en historias inolvidables
+      StoryTunes | Convierte tus canciones favoritas en historias inolvidables
     </title>
     <meta
       name="description"
-      content="Crea historias personalizadas a partir de tus canciones de Spotify con StoryPad. Sé el protagonista y vive una aventura única."
+      content="Crea historias personalizadas a partir de tus canciones de Spotify con StoryTunes. Sé el protagonista y vive una aventura única."
     />
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&family=Roboto:wght@500&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <link rel="icon" type="image/png" href="favicon.png" />
     <!-- Open Graph tags -->
     <meta
       property="og:title"
-      content="StoryPad | Historias desde tus canciones"
+      content="StoryTunes | Historias desde tus canciones"
     />
     <meta
       property="og:description"
-      content="Crea historias personalizadas a partir de tus canciones de Spotify con StoryPad."
+      content="Crea historias personalizadas a partir de tus canciones de Spotify con StoryTunes."
     />
-    <meta property="og:image" content="https://storypad.com/og-image.jpg" />
-    <meta property="og:url" content="https://storypad.com" />
+    <meta property="og:image" content="https://storytunes.com/og-image.jpg" />
+    <meta property="og:url" content="https://storytunes.com" />
   </head>
   <body class="dark-mode">
     <div id="app">
       <header>
         <div class="container">
-          <img src="assets/images/logo.svg" alt="StoryPad Logo" class="logo" />
+          <img
+            src="assets/images/logo.svg"
+            alt="StoryTunes Logo"
+            class="logo"
+          />
           <button id="theme-toggle" aria-label="Cambiar tema">🌓</button>
         </div>
       </header>
@@ -71,13 +79,29 @@
         </section>
       </main>
 
-      <footer>
+      <footer class="site-footer">
         <div class="container">
-          <nav>
-            <a href="#">Términos y Condiciones</a>
-            <a href="#">Política de Privacidad</a>
-            <a href="#">Contacto</a>
-          </nav>
+          <div class="footer-content">
+            <nav class="footer-nav">
+              <a href="#">Términos y Condiciones</a>
+              <a href="#">Política de Privacidad</a>
+              <a href="#">Contacto</a>
+            </nav>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2023 StoryTunes. Todos los derechos reservados.</p>
+          </div>
         </div>
       </footer>
     </div>
