@@ -213,34 +213,45 @@ async function generateStory(track, user) {
             ${data.story.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('')}
         `;
 
+        // Mostrar la historia inmediatamente
+        storyContainer.innerHTML = storyHtml;
+
         // Generar 4 imágenes basadas en la historia
         const imageHtmlPromises = imagePrompts.map(async (prompt, index) => {
-            const imageResponse = await fetch('/generate-image', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    prompt,
-                    story: data.story, // Enviamos la historia completa para contexto
-                    index // Enviamos el índice para mantener la consistencia
-                }),
-            });
+            try {
+                const imageResponse = await fetch('/generate-image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        prompt,
+                        story: data.story,
+                        index
+                    }),
+                });
 
-            if (!imageResponse.ok) {
-                throw new Error(`Error al generar la imagen ${index + 1}`);
+                if (!imageResponse.ok) {
+                    throw new Error(`Error al generar la imagen ${index + 1}`);
+                }
+
+                const imageData = await imageResponse.json();
+                return `<img src="${imageData.imageUrl}" alt="Imagen ${index + 1} de la historia" style="max-width: 100%; margin-top: 20px;">`;
+            } catch (error) {
+                console.error(`Error al generar la imagen ${index + 1}:`, error);
+                return `<p>No se pudo generar la imagen ${index + 1}.</p>`;
             }
-
-            const imageData = await imageResponse.json();
-            return `<img src="${imageData.imageUrl}" alt="Imagen ${index + 1} de la historia" style="max-width: 100%; margin-top: 20px;">`;
         });
 
+        // Esperar a que todas las promesas de imágenes se resuelvan
         const imageHtmlArray = await Promise.all(imageHtmlPromises);
         const imageHtml = imageHtmlArray.join('');
 
-        storyContainer.innerHTML = storyHtml + imageHtml;
+        // Añadir las imágenes (o mensajes de error) al final de la historia
+        storyContainer.innerHTML += imageHtml;
+
     } catch (error) {
-        console.error('Error:', error);
-        storyContainer.innerHTML = '<p>Lo siento, hubo un error al generar la historia o las imágenes. Por favor, intenta de nuevo.</p>';
+        console.error('Error al generar la historia:', error);
+        storyContainer.innerHTML = '<p>Lo siento, hubo un error al generar la historia. Por favor, intenta de nuevo.</p>';
     }
 }
