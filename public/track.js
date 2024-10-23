@@ -109,7 +109,11 @@ async function generateStory(track, user) {
     const storyContainer = document.getElementById('story-container');
     storyContainer.innerHTML = '<p>Generando historia...</p>';
 
-    const prompt = `Escribe una historia cautivadora dirigida al público juvenil, centrada en una narrativa romántica, y dividida en cuatro partes principales: Introducción, Desarrollo, Clímax con Giro Sorprendente y Desenlace. Cada parte debe contener cuatro párrafos extensos, sumando un total de dieciséis párrafos para toda la historia. La historia debe tener un final abierto, dejando la posibilidad de continuarla en el futuro. La historia debe estar inspirada en la canción '${track.name}' de ${track.artists.join(', ')}.
+    const prompt = `Escribe una historia cautivadora dirigida al público juvenil, Genera una historia corta y atrapante basada en la canción "${track.name}" de ${track.artists[0].name}. 
+    La canción pertenece al género ${track.genre || 'desconocido'}. 
+    Incorpora elementos del género en la narrativa. 
+    La historia debe ser emocionante y cautivadora, adaptada al estilo y atmósfera de la canción.
+    Incluye al usuario ${user.display_name} como protagonista de la historia, y dividida en cuatro partes principales: Introducción, Desarrollo, Clímax con Giro Sorprendente y Desenlace. Cada parte debe contener cuatro párrafos extensos, sumando un total de dieciséis párrafos para toda la historia. La historia debe tener un final abierto, dejando la posibilidad de continuarla en el futuro. La historia debe estar inspirada en la canción '${track.name}' de ${track.artists.join(', ')}.
 
     Además, la historia debe incluir:
     - Conversaciones entre personajes: Diálogos significativos que muestren las relaciones y conflictos entre los personajes.
@@ -188,19 +192,28 @@ async function generateStory(track, user) {
         }
 
         const data = await response.json();
+
+        // Dividir la historia en 4 partes
+        const storyParts = data.story.split('\n\n').filter(part => part.trim() !== '');
+        const numParts = Math.min(storyParts.length, 4);
+
+        const imagePrompts = [];
+        for (let i = 0; i < numParts; i++) {
+            const partIndex = Math.floor(i * storyParts.length / numParts);
+            imagePrompts.push(`Ilustración manga en blanco y negro de la siguiente escena: ${storyParts[partIndex]}. Estilo: manga detallado, tinta negra sobre papel blanco, sombreado con tramas.`);
+        }
+
+        // Rellenar con prompts genéricos si no hay suficientes partes en la historia
+        while (imagePrompts.length < 4) {
+            imagePrompts.push(`Ilustración manga en blanco y negro de una escena de la historia de ${user.name} inspirada en la canción "${track.name}". Estilo: manga detallado, tinta negra sobre papel blanco, sombreado con tramas.`);
+        }
+
         const storyHtml = `
-            <h3>Una historia de amor inspirada en "${track.name}"</h3>
+            <h3>Una historia inspirada en "${track.name}"</h3>
             ${data.story.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('')}
         `;
 
         // Generar 4 imágenes basadas en la historia
-        const imagePrompts = [
-            `Una escena romántica que muestra a ${user.name} y su interés amoroso en la introducción de la historia, inspirada en la canción "${track.name}".`,
-            `Una imagen que represente el conflicto o desafío principal en el desarrollo de la historia de ${user.name}.`,
-            `Una escena dramática que ilustre el giro sorprendente en el clímax de la historia de ${user.name}.`,
-            `Una imagen que capture el final abierto y la transformación de los personajes en el desenlace de la historia de ${user.name}.`
-        ];
-
         const imageHtmlPromises = imagePrompts.map(async (prompt, index) => {
             const imageResponse = await fetch('/generate-image', {
                 method: 'POST',

@@ -163,9 +163,9 @@ app.post('/generate-story', async (req, res) => {
         console.log('Received prompt for story generation');
         console.log('Sending request to OpenAI API');
         const completion = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo",
+            model: "gpt-3.5-turbo-16k",
             messages: [{ role: "user", content: prompt }],
-            max_tokens: 4000,
+            max_tokens: 8000,
         });
         console.log('Received response from OpenAI API');
 
