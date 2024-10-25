@@ -1,624 +1,173 @@
-:root {
-  --bg-color: #f0f0f0;
-  --text-color: #333;
-  --button-bg: #1db954;
-  --button-text: #fff;
-  --card-bg: #fff;
-  --book-spine-color: #1db954;
-  --book-cover-shadow: rgba(0, 0, 0, 0.2);
-}
-
-.dark-mode {
-  --bg-color: #121212;
-  --text-color: #fff;
-  --button-bg: #1db954;
-  --button-text: #fff;
-  --card-bg: #282828;
-  --book-spine-color: #1db954;
-  --book-cover-shadow: rgba(255, 255, 255, 0.1);
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 body {
-  font-family: "Roboto", sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
+  font-family: "Open Sans", sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
   min-height: 100vh;
+  background: linear-gradient(-45deg, #1db954, #191414, #1ed760);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  color: white;
 }
 
-#app {
-  width: 100%;
-  max-width: 1200px;
-  padding: 20px;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-h1 {
-  font-size: 2.5rem;
-  margin: 0;
-}
-
-#theme-toggle {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.spotify-button {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  padding: 12px 24px;
-  font-size: 1rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: transform 0.1s, box-shadow 0.1s;
-}
-
-.spotify-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#user-info {
-  background-color: var(--card-bg);
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#top-tracks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.book {
-  width: 150px;
-  height: 200px;
-  perspective: 1000px;
-  cursor: pointer;
-  position: relative;
-  margin-bottom: 60px; /* Aumentado para dar espacio a la información */
-}
-
-.book-cover {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-}
-
-.book:hover .book-cover {
-  transform: rotateY(-30deg); /* Cambiado a -30deg para un efecto más sutil */
-}
-
-.book-front,
-.book-back,
-.book-spine {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-
-.book-front {
-  background-size: cover;
-  background-position: center;
-  border-radius: 0 2px 2px 0;
-  box-shadow: 5px 5px 20px var(--book-cover-shadow);
-}
-
-.book-back {
-  background-color: var(--card-bg);
-  transform: rotateY(180deg);
-  border-radius: 2px 0 0 2px;
-}
-
-.book-spine {
-  width: 10px;
-  left: -10px;
-  background-color: var(--book-spine-color);
-  transform: rotateY(-90deg);
-  transform-origin: right;
-}
-
-.book-info {
-  position: absolute;
-  bottom: -80px; /* Aumentado para dar más espacio */
-  left: 0;
-  width: 100%;
-  background-color: var(--card-bg);
-  padding: 10px;
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--text-color);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  box-shadow: 0 2px 4px var(--book-cover-shadow);
-  border-radius: 0 0 4px 4px;
-}
-
-.book:hover .book-info {
-  opacity: 1;
-}
-
-.book-info h3 {
-  margin: 0 0 5px 0;
-  font-size: 1rem;
-  color: var(--text-color);
-}
-
-.book-info p {
-  margin: 2px 0;
-  color: var(--text-color);
-}
-
-@media (max-width: 600px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-  .spotify-button {
-    width: 100%;
-  }
-
-  .book {
-    width: 120px;
-    height: 160px;
-    margin-bottom: 100px; /* Aumentado para dar más espacio en móviles */
-  }
-
-  .book-info {
-    font-size: 0.75rem; /* Ajustado el tamaño de fuente */
-    bottom: -100px; /* Ajustado para móviles */
-    padding: 8px; /* Reducido el padding */
-  }
-
-  .generate-story {
-    font-size: 0.8em; /* Reducido ligeramente para móviles */
-    padding: 6px 10px; /* Ajustado el padding para móviles */
-    width: 90%; /* Aumentado el ancho relativo en móviles */
-  }
-}
-
-.generate-story {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  padding: 8px 12px; /* Aumentado el padding */
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.9em; /* Aumentado ligeramente el tamaño de fuente */
-  margin-top: 8px; /* Aumentado el margen superior */
-  transition: background-color 0.3s, transform 0.1s;
-  width: 80%; /* Establecer un ancho relativo */
-  max-width: 150px; /* Limitar el ancho máximo */
-}
-
-.generate-story:hover {
-  background-color: #1ed760;
-  transform: scale(1.05); /* Efecto de escala al pasar el mouse */
-}
-
-@media (max-width: 400px) {
-  .book {
-    width: 100px;
-    height: 140px;
-    margin-bottom: 110px; /* Aumentado aún más para pantallas muy pequeñas */
-  }
-
-  .book-info {
-    font-size: 0.7rem;
-    bottom: -110px;
-  }
-
-  .generate-story {
-    font-size: 0.75em;
-    padding: 5px 8px;
-    width: 95%;
-  }
-}
-
-#top-tracks ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-#top-tracks li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-#top-tracks img {
-  margin-right: 10px;
-}
-
-/* Estilos adicionales para la landing page */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.hero {
-  padding: 120px 0 60px;
-  background-color: var(--bg-alt-color);
+header {
+  padding: 20px 0;
 }
 
-.hero .container {
+.logo {
+  height: 40px;
+}
+
+main {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  min-height: calc(100vh - 100px);
 }
 
 .hero-content {
-  flex: 1;
-  max-width: 50%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-illustration {
+  width: 100%;
+  max-width: 300px;
+  margin: 1rem auto;
 }
 
 .hero-image {
-  flex: 1;
-  max-width: 50%;
-  text-align: right;
-}
-
-.hero-image img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
+  display: block;
 }
 
-.benefits {
-  padding: 60px 0;
-  background-color: var(--bg-color);
-}
-
-.benefits .container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.benefit {
-  flex: 1;
-  text-align: center;
-  padding: 0 20px;
-}
-
-.benefit img {
-  width: 64px;
-  height: 64px;
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
   margin-bottom: 20px;
 }
 
-footer {
-  background-color: var(--footer-bg);
-  color: var(--footer-text);
-  padding: 40px 0;
+p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
 }
-
-footer .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-@media (max-width: 768px) {
-  .hero .container,
-  .benefits .container,
-  footer .container {
-    flex-direction: column;
-  }
-
-  .hero-content,
-  .hero-image {
-    max-width: 100%;
-  }
-
-  .hero-image {
-    margin-top: 30px;
-  }
-
-  .benefit {
-    margin-bottom: 40px;
-  }
-}
-
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
 
 .spotify-connect-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   background-color: #1db954;
   color: white;
   border: none;
-  border-radius: 500px;
-  padding: 12px 24px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 30px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
 }
 
 .spotify-connect-button:hover {
   background-color: #1ed760;
-  transform: scale(1.05);
-}
-
-.spotify-connect-button:active {
-  transform: scale(0.95);
 }
 
 .spotify-icon {
-  width: 18px;
-  height: 18px;
-  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
   fill: currentColor;
 }
 
-/* Ajuste para modo oscuro */
-.dark-mode .spotify-connect-button {
-  background-color: #1db954;
-  color: white;
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 50px;
 }
 
-.dark-mode .spotify-connect-button:hover {
-  background-color: #1ed760;
-}
-
-.hero-title {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  font-size: 2.5rem;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  color: var(--text-color);
-}
-
-.hero-description {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  margin-bottom: 2rem;
-  color: var(--text-color);
-}
-
-.site-footer {
-  background-color: #1a1a1a;
-  color: #cccccc;
-  padding: 40px 0 20px;
-  font-family: "Open Sans", sans-serif;
-  position: relative;
-}
-
-.site-footer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background-color: #333333;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.footer-nav a {
-  color: #ffffff;
-  text-decoration: none;
-  margin-right: 20px;
-  transition: color 0.3s ease;
-}
-
-.footer-nav a:hover {
-  color: #1db954;
-}
-
-.social-icons a {
-  color: #ffffff;
-  font-size: 20px;
-  margin-left: 15px;
-  transition: color 0.3s ease;
-}
-
-.social-icons a:hover {
-  color: #1db954;
-}
-
-.footer-bottom {
+.feature-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
   text-align: center;
-  margin-top: 20px;
-  font-size: 14px;
+  backdrop-filter: blur(10px);
 }
 
-/* Estilos responsivos */
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.feature-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
+  h1 {
+    font-size: 2rem;
   }
 
-  .footer-nav {
-    margin-bottom: 20px;
+  p {
+    font-size: 1rem;
   }
 
-  .footer-nav a {
-    display: block;
-    margin: 10px 0;
+  .spotify-connect-button {
+    font-size: 1rem;
+    padding: 12px 24px;
   }
 
-  .social-icons {
-    margin-top: 20px;
+  .feature-grid {
+    grid-template-columns: 1fr;
   }
 
-  .social-icons a {
-    margin: 0 10px;
+  .hero-illustration {
+    max-width: 250px;
   }
 }
 
-/* Estilos para la página de galería */
-.gallery-title {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  font-size: 2.5rem;
-  color: var(--text-color);
-  margin-bottom: 1rem;
-}
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
 
-.section-title {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  font-size: 1.8rem;
-  color: var(--text-color);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
+  .spotify-connect-button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
 
-.user-info-text {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-}
+  .feature-icon {
+    font-size: 1.5rem;
+  }
 
-#top-tracks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
+  .feature-title {
+    font-size: 1rem;
+  }
 
-.book {
-  width: 150px;
-  height: 200px;
-  perspective: 1000px;
-  cursor: pointer;
-  position: relative;
-  margin-bottom: 60px;
-}
-
-.book-cover {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-}
-
-.book:hover .book-cover {
-  transform: rotateY(-30deg);
-}
-
-.book-front,
-.book-back,
-.book-spine {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-
-.book-front {
-  background-size: cover;
-  background-position: center;
-  border-radius: 0 2px 2px 0;
-  box-shadow: 5px 5px 20px var(--book-cover-shadow);
-}
-
-.book-back {
-  background-color: var(--card-bg);
-  transform: rotateY(180deg);
-  border-radius: 2px 0 0 2px;
-}
-
-.book-spine {
-  width: 10px;
-  left: -10px;
-  background-color: var(--book-spine-color);
-  transform: rotateY(-90deg);
-  transform-origin: right;
-}
-
-.book-info {
-  position: absolute;
-  bottom: -60px;
-  left: 0;
-  width: 100%;
-  background-color: var(--card-bg);
-  padding: 10px;
-  text-align: center;
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.8rem;
-  color: var(--text-color);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  box-shadow: 0 2px 4px var(--book-cover-shadow);
-  border-radius: 0 0 4px 4px;
-}
-
-.book:hover .book-info {
-  opacity: 1;
-}
-
-.book-info h3 {
-  margin: 0 0 5px 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-color);
-}
-
-.book-info p {
-  margin: 2px 0;
-  color: var(--text-color);
-}
-
-.generate-story {
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  padding: 8px 12px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.9em;
-  margin-top: 8px;
-  transition: background-color 0.3s, transform 0.1s;
-  width: 80%;
-  max-width: 150px;
-}
-
-.generate-story:hover {
-  background-color: #1ed760;
-  transform: scale(1.05);
+  .hero-illustration {
+    max-width: 200px;
+  }
 }

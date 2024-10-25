@@ -33,77 +33,66 @@
     <meta property="og:url" content="https://storytunes.com" />
   </head>
   <body class="dark-mode">
-    <div id="app">
+    <div class="container">
       <header>
-        <div class="container">
-          <img
-            src="assets/images/logo.svg"
-            alt="StoryTunes Logo"
-            class="logo"
-          />
-          <button id="theme-toggle" aria-label="Cambiar tema">🌓</button>
-        </div>
+        <img src="assets/images/logo.svg" alt="StoryTunes Logo" class="logo" />
       </header>
-
       <main>
-        <section class="hero">
-          <div class="container">
-            <div class="hero-content">
-              <h1 class="hero-title">
-                Convierte tus canciones favoritas en historias inolvidables
-              </h1>
-              <p class="hero-description">
-                Crea historias personalizadas basadas en tus canciones de
-                Spotify y sé el protagonista de tu propia aventura musical.
-              </p>
-              <button id="login-button" class="spotify-connect-button">
-                <svg
-                  class="spotify-icon"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
-                  />
-                </svg>
-                Conéctate con Spotify
-              </button>
-            </div>
-            <div class="hero-image">
-              <img
-                src="assets/images/hero-illustration.svg"
-                alt="Ilustración de un libro con notas musicales y escenas imaginarias"
+        <div class="hero-content">
+          <div class="hero-illustration">
+            <img
+              src="assets/images/hero-illustration.svg"
+              alt="StoryTunes Hero Illustration"
+              class="hero-image"
+            />
+          </div>
+          <h1>
+            StoryTunes, Convierte tus canciones favoritas en historias
+            inolvidables
+          </h1>
+          <p>
+            Crea historias personalizadas basadas en tus canciones de Spotify y
+            sé el protagonista de tu propia aventura musical.
+          </p>
+          <button id="login-button" class="spotify-connect-button">
+            <svg
+              class="spotify-icon"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"
               />
+            </svg>
+            Conéctate con Spotify
+          </button>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <i class="fas fa-music feature-icon"></i>
+              <h3 class="feature-title">Explorar Canciones</h3>
+              <p>
+                Busca y explora tus canciones favoritas de Spotify para crear
+                historias
+              </p>
             </div>
-          </div>
-        </section>
-      </main>
-
-      <footer class="site-footer">
-        <div class="container">
-          <div class="footer-content">
-            <nav class="footer-nav">
-              <a href="#">Términos y Condiciones</a>
-              <a href="#">Política de Privacidad</a>
-              <a href="#">Contacto</a>
-            </nav>
-            <div class="social-icons">
-              <a href="#" aria-label="Facebook"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a href="#" aria-label="Twitter"
-                ><i class="fab fa-twitter"></i
-              ></a>
-              <a href="#" aria-label="Instagram"
-                ><i class="fab fa-instagram"></i
-              ></a>
+            <div class="feature-card">
+              <i class="fas fa-book feature-icon"></i>
+              <h3 class="feature-title">Generar Historias</h3>
+              <p>
+                Convierte las letras de tus canciones en historias
+                personalizadas y únicas
+              </p>
             </div>
-          </div>
-          <div class="footer-bottom">
-            <p>&copy; 2023 StoryTunes. Todos los derechos reservados.</p>
+            <div class="feature-card">
+              <i class="fas fa-share-alt feature-icon"></i>
+              <h3 class="feature-title">Compartir Creaciones</h3>
+              <p>
+                Comparte tus historias generadas con amigos en redes sociales
+              </p>
+            </div>
           </div>
         </div>
-      </footer>
+      </main>
     </div>
     <script src="app.js"></script>
   </body>
