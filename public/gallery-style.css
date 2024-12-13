@@ -1,0 +1,101 @@
+/* Estilos específicos para la galería */
+#top-tracks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+  padding: 24px;
+}
+
+.book {
+  background-color: #181818;
+  border-radius: 8px;
+  padding: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.book:hover {
+  background-color: #282828;
+}
+
+.book-cover {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* Aspect ratio 1:1 */
+  margin-bottom: 16px;
+}
+
+.book-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+}
+
+.book-info {
+  color: #fff;
+}
+
+.book-info p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.book-info p:first-child {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.generate-story {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.generate-story:hover {
+  background-color: #1ed760;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Estilos adicionales para mantener consistencia con el landing page */
+#user-info {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#user-name {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+#user-email {
+  font-size: 1rem;
+  color: #666;
+}
+
+body.dark-mode #user-email {
+  color: #aaa;
+}
+
+/* Ajustes para la responsividad */
+@media (max-width: 768px) {
+  #top-tracks {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}

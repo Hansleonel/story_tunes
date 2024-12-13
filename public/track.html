@@ -22,7 +22,25 @@
         <button id="theme-toggle">☀️</button>
       </header>
       <main id="track-info">
-        <!-- La información de la canción se cargará aquí dinámicamente -->
+        <div class="track-header">
+          <img id="track-image" class="track-image" src="" alt="Album cover" />
+          <div class="track-details">
+            <h2 id="track-name"></h2>
+            <p id="track-artists"></p>
+            <p id="track-album"></p>
+          </div>
+        </div>
+        <div class="track-actions">
+          <button id="spotify-button" class="spotify-button">
+            Escuchar en Spotify
+          </button>
+          <button id="generate-story-button" class="generate-story-button">
+            Generar Historia
+          </button>
+        </div>
+        <div id="story-container" class="story-container" style="display: none">
+          <!-- La historia generada se insertará aquí -->
+        </div>
       </main>
     </div>
     <script src="track.js"></script>

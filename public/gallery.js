@@ -26,10 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Access token found:', accessToken);
         showLoading('Cargando tus datos...');
 
-        console.log('Fetching user info from server');
         fetch(`/user-info?access_token=${accessToken}`)
             .then(response => {
-                console.log('Response received from server');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -38,12 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 console.log('User data received:', data);
                 displayUserInfo(data);
-                hideLoading(); // Ocultar el loading después de mostrar la información
+                hideLoading();
             })
             .catch(error => {
                 console.error('Error fetching user data:', error);
                 userInfo.textContent = 'Error loading user data. Please try again.';
-                hideLoading(); // Ocultar el loading en caso de error
+                hideLoading();
             });
     } else {
         console.log('No access token found');
@@ -109,4 +107,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // ... código para cargar las canciones más escuchadas ...
         hideLoading();
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const accessToken = urlParams.get('access_token');
+
+        if (accessToken) {
+            console.log('Access token found in gallery page');
+            // Aquí puedes agregar la lógica para cargar los datos de la galería
+            // usando el accessToken
+        } else {
+            console.log('No access token found in gallery page');
+            // Manejar el caso en que no hay token de acceso
+        }
+    });
 });

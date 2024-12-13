@@ -3,100 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>StoryTunes | Tu Galería de Canciones</title>
+    <title>Galería - StoryTunes</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="gallery-style.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&family=Roboto:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&family=Roboto:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <style>
-      .loading-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-      }
-      .loading-content {
-        text-align: center;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .loading-spinner {
-        width: 50px;
-        height: 50px;
-        border: 3px solid #fff;
-        border-top: 3px solid #1db954;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-      .loading-text {
-        margin-top: 20px;
-        font-size: 18px;
-      }
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      @media screen and (max-width: 768px) {
-        .book {
-          position: relative;
-          overflow: visible;
-        }
-        .book-info {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background-color: rgba(0, 0, 0, 0.7);
-          padding: 10px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          z-index: 10;
-        }
-        .book-info p {
-          margin: 0;
-          text-align: center;
-          color: white;
-        }
-        .book-info .generate-story {
-          margin-top: 5px;
-        }
-        .book-cover {
-          margin-bottom: 90px; /* Ajusta este valor según la altura de tu .book-info */
-        }
-      }
-    </style>
   </head>
-  <body class="dark-mode">
+  <body>
     <div id="app">
-      <!-- Loading overlay -->
-      <div id="loading-overlay" class="loading-overlay">
-        <div class="loading-content">
-          <div class="loading-spinner"></div>
-          <p id="loading-text" class="loading-text">
-            Cargando tu experiencia musical...
-          </p>
-        </div>
-      </div>
-
       <header>
         <div class="container">
           <img
@@ -107,17 +23,15 @@
           <button id="theme-toggle" aria-label="Cambiar tema">🌓</button>
         </div>
       </header>
-
       <main>
-        <div id="user-info">
-          <h1 class="gallery-title">Tu Galería de Canciones</h1>
-          <p id="user-name" class="user-info-text"></p>
-          <p id="user-email" class="user-info-text"></p>
-          <h2 class="section-title">Tus Canciones Más Escuchadas</h2>
+        <div class="container">
+          <div id="user-info">
+            <h2 id="user-name"></h2>
+            <p id="user-email"></p>
+          </div>
           <div id="top-tracks"></div>
         </div>
       </main>
-
       <footer class="site-footer">
         <div class="container">
           <div class="footer-content">
@@ -126,23 +40,15 @@
               <a href="#">Política de Privacidad</a>
               <a href="#">Contacto</a>
             </nav>
-            <div class="social-icons">
-              <a href="#" aria-label="Facebook"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a href="#" aria-label="Twitter"
-                ><i class="fab fa-twitter"></i
-              ></a>
-              <a href="#" aria-label="Instagram"
-                ><i class="fab fa-instagram"></i
-              ></a>
-            </div>
           </div>
           <div class="footer-bottom">
             <p>&copy; 2023 StoryTunes. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
+    </div>
+    <div id="loading-overlay">
+      <div id="loading-text">Cargando...</div>
     </div>
     <script src="gallery.js"></script>
   </body>

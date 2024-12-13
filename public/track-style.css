@@ -158,3 +158,85 @@ body {
 .generate-story-button:hover {
   background-color: #a461d8;
 }
+
+#track-info {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #181818;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.track-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.track-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 4px;
+  margin-right: 24px;
+}
+
+.track-details h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.track-details p {
+  font-size: 16px;
+  color: #b3b3b3;
+  margin: 4px 0;
+}
+
+.track-actions {
+  margin-top: 24px;
+}
+
+.spotify-button,
+.generate-story-button {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  margin-right: 12px;
+}
+
+.spotify-button:hover,
+.generate-story-button:hover {
+  background-color: #1ed760;
+}
+
+.story-container {
+  margin-top: 24px;
+  background-color: #282828;
+  padding: 24px;
+  border-radius: 8px;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+  background-color: #121212;
+}
+
+/* Ajustes para la responsividad */
+@media (max-width: 768px) {
+  .track-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .track-image {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+}

@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const axios = require('axios');
 const cors = require('cors');
 const { OpenAI } = require('openai');
+const path = require('path');
 
 dotenv.config();
 console.log('Environment variables loaded');
@@ -211,6 +212,11 @@ app.post('/generate-image', async (req, res) => {
         console.error('Error generating image:', error);
         res.status(500).json({ error: 'Error al generar la imagen' });
     }
+});
+
+// Agregar esta nueva ruta para /gallery
+app.get('/gallery', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'gallery.html'));
 });
 
 app.listen(port, () => {
