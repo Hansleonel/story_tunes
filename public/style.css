@@ -40,7 +40,7 @@ body {
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(-45deg, #191414, #1db954, #121212, #1ed760);
+  background: linear-gradient(-45deg, #191414, #158f42, #121212, #19b850);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
 }
@@ -355,7 +355,7 @@ h1 {
 
 .index-feature-icon {
   font-size: 2.5rem;
-  color: #1db954;
+  color: white;
   margin-bottom: 1rem;
 }
 
