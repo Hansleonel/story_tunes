@@ -274,52 +274,116 @@ h1 {
 }
 
 .hero {
-  padding: 120px 0 60px;
-  background-color: var(--bg-alt-color);
-}
-
-.hero .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.hero-content {
-  flex: 1;
-  max-width: 50%;
-}
-
-.hero-image {
-  flex: 1;
-  max-width: 50%;
-  text-align: right;
-}
-
-.hero-image img {
-  max-width: 100%;
-  height: auto;
-}
-
-.benefits {
-  padding: 60px 0;
-  background-color: var(--bg-color);
-}
-
-.benefits .container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.benefit {
-  flex: 1;
   text-align: center;
-  padding: 0 20px;
+  padding: 4rem 0;
 }
 
-.benefit img {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 20px;
+.hero-logo {
+  width: 200px;
+  margin-bottom: 2rem;
+}
+
+.hero-illustration {
+  width: 80%;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.spotify-connect-button {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 500px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.spotify-connect-button:hover {
+  transform: scale(1.05);
+  background-color: #1ed760;
+}
+
+.features {
+  padding: 4rem 0;
+}
+
+.features-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  flex: 1;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.index-feature-icon {
+  font-size: 2.5rem;
+  color: #1db954;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  color: white;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .features-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-card {
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
 }
 
 footer {
