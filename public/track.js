@@ -38,42 +38,53 @@ function displayTrackInfo(track, user) {
             </div>
             ${track.preview_url ? `
                 <div class="preview-container">
-                    <button id="play-preview" class="track-button"><i class="fas fa-play"></i> Reproducir Preview</button>
+                    <button id="play-preview" class="track-button">
+                        <i class="fas fa-play"></i> Reproducir Preview
+                    </button>
                     <div class="progress-container">
                         <div class="progress-bar"></div>
                     </div>
                     <span id="time-display">0:00 / 0:30</span>
                 </div>
-            ` : ''}
+            ` : `
+                <div id="embed-iframe"></div>
+            `}
             <div class="track-controls">
-                <a href="${track.external_url}" target="_blank" class="track-button"><i class="fab fa-spotify"></i> Abrir en Spotify</a>
-                <button id="generate-story" class="track-button generate-story-button"><i class="fas fa-book"></i> Generar Historia</button>
+                <a href="${track.external_url}" target="_blank" class="track-button">
+                    <i class="fab fa-spotify"></i> Abrir en Spotify
+                </a>
+                <button id="generate-story" class="track-button generate-story-button">
+                    <i class="fas fa-book"></i> Generar Historia
+                </button>
             </div>
         </div>
         <div id="story-container"></div>
     `;
 
-    const playPreviewButton = document.getElementById('play-preview');
-    if (playPreviewButton) {
-        let audio = new Audio(track.preview_url);
-        let progressBar = document.querySelector('.progress-bar');
-        let timeDisplay = document.getElementById('time-display');
-
-        // Función para iniciar la reproducción
-        function startPlayback() {
-            audio.play().then(() => {
-                playPreviewButton.innerHTML = '<i class="fas fa-pause"></i> Pausar Preview';
-            }).catch(error => {
-                console.log('Autoplay was prevented. User interaction may be required.');
+    // Si no hay preview_url, usar el Embed de Spotify
+    if (!track.preview_url) {
+        window.onSpotifyIframeApiReady = (IFrameAPI) => {
+            const element = document.getElementById('embed-iframe');
+            const options = {
+                width: '100%',
+                height: '152',
+                uri: `spotify:track:${track.id}`
+            };
+            IFrameAPI.createController(element, options, (EmbedController) => {
+                console.log('Spotify Embed ready');
             });
-        }
-
-        // Intenta reproducir automáticamente
-        startPlayback();
+        };
+    } else {
+        // Usar el reproductor de preview
+        const playPreviewButton = document.getElementById('play-preview');
+        const audio = new Audio(track.preview_url);
+        const progressBar = document.querySelector('.progress-bar');
+        const timeDisplay = document.getElementById('time-display');
 
         playPreviewButton.addEventListener('click', () => {
             if (audio.paused) {
-                startPlayback();
+                audio.play();
+                playPreviewButton.innerHTML = '<i class="fas fa-pause"></i> Pausar Preview';
             } else {
                 audio.pause();
                 playPreviewButton.innerHTML = '<i class="fas fa-play"></i> Reproducir Preview';
@@ -81,7 +92,7 @@ function displayTrackInfo(track, user) {
         });
 
         audio.addEventListener('timeupdate', () => {
-            let progress = (audio.currentTime / 30) * 100;
+            const progress = (audio.currentTime / 30) * 100;
             progressBar.style.width = `${progress}%`;
             timeDisplay.textContent = `${formatTime(audio.currentTime)} / 0:30`;
         });
