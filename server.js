@@ -166,7 +166,7 @@ app.post('/generate-story', async (req, res) => {
         const messages = [
             {
                 role: "system",
-                content: `Eres un gran escritor creativo con el tono de Mario Vargas Llosa y que crea historias narrativas cautivadoras. 
+                content: `Eres un gran escritor creativo con el tono de Mario Vargas Llosa y que crea capitulos de la novela 'Travesuras de la niña mala'. 
                 Debes crear un capitulo de la novela ‘Travesuras de la niña mala’ que:
                 - Tenga aproximadamente 5 párrafos con como maximo 4000 caracteres
                 - Incorporen elementos de la canción de forma sutil y creativa
