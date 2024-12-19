@@ -122,7 +122,7 @@ async function generateStory(track, user) {
 
     const prompt = `A continuación, escribe un capítulo de la novela ‘Travesuras de la niña mala’ que mantenga el estilo, con un tono nostálgico y melancólico por alguién si es protagonista es hombre ese alguien tiene que ser mujer y si es protagonista es mujer ese alguien tiene que ser hombre y el contexto puede ser actual es decir en estos años de la novela de Mario Vargas Llosa. 
     El capítulo debe estar influenciado por el ambiente, ritmo y sensaciones propias del género,
-    el o la protagonista debe de llamarse ${user.name}, en lo posible el protagonista debe de tener como maximo 25 años, el capitulo debe de ser de 5 párrafos grandes por lo menos 3000 caracteres`;
+    el o la protagonista debe de llamarse ${user.name}, en lo posible el protagonista debe de tener como maximo 25 años, el capitulo debe de ser de 5 párrafos grandes por lo menos 6000 caracteres`;
 
     try {
         const response = await fetch('/generate-story', {

@@ -168,7 +168,7 @@ app.post('/generate-story', async (req, res) => {
                 role: "system",
                 content: `Eres un escritor creativo experto en convertir canciones en historias narrativas cautivadoras. 
                 Debes crear un capitulo de la novela ‘Travesuras de la niña mala’ que:
-                - Tenga aproximadamente 5 párrafos (4000 caracteres)
+                - Tenga aproximadamente 5 párrafos (6000 caracteres)
                 - Incorporen elementos de la canción de forma sutil y creativa
                 - Sean emocionalmente resonantes
                 No menciones explícitamente que la historia está basada en una canción.`
@@ -186,7 +186,7 @@ app.post('/generate-story', async (req, res) => {
         const completion = await openai.chat.completions.create({
             model: "gpt-4",
             messages: messages,
-            max_tokens: 4000,
+            max_tokens: 8000,
             temperature: 0.8, // Aumentamos la creatividad
             presence_penalty: 0.6, // Favorece la variación en el contenido
             frequency_penalty: 0.3, // Reduce repeticiones
