@@ -159,22 +159,64 @@ const openai = new OpenAI({
 app.post('/generate-story', async (req, res) => {
     console.log('Story generation route accessed');
     try {
-        const { prompt } = req.body;
+        const { prompt, trackInfo } = req.body;
         console.log('Received prompt for story generation');
+
+        // Sistema de prompt mejorado para GPT-4
+        const messages = [
+            {
+                role: "system",
+                content: `Eres un escritor creativo experto en convertir canciones en historias narrativas cautivadoras. 
+                Debes crear un capitulo de la novela ‘Travesuras de la niña mala’ que:
+                - Tenga aproximadamente 5 párrafos (4000 caracteres)
+                - Incorporen elementos de la canción de forma sutil y creativa
+                - Sean emocionalmente resonantes
+                No menciones explícitamente que la historia está basada en una canción.`
+            },
+            {
+                role: "user",
+                content: `Genera una historia que mencione esta canción:
+                Título: ${trackInfo.name}
+                Artista: ${trackInfo.artists.join(', ')}
+                Contexto: ${prompt}`
+            }
+        ];
+
         console.log('Sending request to OpenAI API');
         const completion = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo-16k",
-            messages: [{ role: "user", content: prompt }],
-            max_tokens: 8000,
+            model: "gpt-4",
+            messages: messages,
+            max_tokens: 4000,
+            temperature: 0.8, // Aumentamos la creatividad
+            presence_penalty: 0.6, // Favorece la variación en el contenido
+            frequency_penalty: 0.3, // Reduce repeticiones
         });
-        console.log('Received response from OpenAI API');
 
+        console.log('Received response from OpenAI API');
         const story = completion.choices[0].message.content;
+
+        // Validación de la respuesta
+        if (!story || story.length < 1000) {
+            throw new Error('La historia generada es demasiado corta');
+        }
+
         console.log('Story generated successfully');
-        res.json({ story });
+        res.json({
+            story,
+            usage: completion.usage // Para monitoreo de tokens
+        });
     } catch (error) {
         console.error('Error generating story:', error);
-        res.status(500).json({ error: 'Error al generar la historia' });
+
+        // Manejo de errores más específico
+        if (error.response?.status === 429) {
+            res.status(429).json({ error: 'Demasiadas solicitudes. Por favor, intenta más tarde.' });
+        } else {
+            res.status(500).json({
+                error: 'Error al generar la historia',
+                details: process.env.NODE_ENV === 'development' ? error.message : undefined
+            });
+        }
     }
 });
 

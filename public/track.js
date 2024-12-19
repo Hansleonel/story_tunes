@@ -120,74 +120,9 @@ async function generateStory(track, user) {
     const storyContainer = document.getElementById('story-container');
     storyContainer.innerHTML = '<p>Generando historia...</p>';
 
-    const prompt = `Escribe una historia cautivadora dirigida al público juvenil, Genera una historia corta y atrapante basada en la canción "${track.name}" de ${track.artists[0].name}. 
-    La canción pertenece al género ${track.genre || 'desconocido'}. 
-    Incorpora elementos del género en la narrativa. 
-    La historia debe ser emocionante y cautivadora, adaptada al estilo y atmósfera de la canción.
-    Incluye al usuario ${user.display_name} como protagonista de la historia, y dividida en cuatro partes principales: Introducción, Desarrollo, Clímax con Giro Sorprendente y Desenlace. Cada parte debe contener cuatro párrafos extensos, sumando un total de dieciséis párrafos para toda la historia. La historia debe tener un final abierto, dejando la posibilidad de continuarla en el futuro. La historia debe estar inspirada en la canción '${track.name}' de ${track.artists.join(', ')}.
-
-    Además, la historia debe incluir:
-    - Conversaciones entre personajes: Diálogos significativos que muestren las relaciones y conflictos entre los personajes.
-    - Pensamientos internos: Reflexiones y monólogos internos que profundicen en las emociones y motivaciones de los personajes.
-    - Recuerdos o flashbacks: Momentos del pasado que aporten contexto y enriquezcan la trama y los personajes.
-
-    Introducción (4 párrafos):
-    - Presenta a ${user.name} como protagonista principal, un joven carismático y relatable.
-    - Introduce al interés amoroso y dos personajes secundarios importantes.
-    - Describe vívidamente el entorno, estableciendo el escenario de la historia de amor.
-    - Establece la situación inicial de ${user.name}, sus deseos y aspiraciones.
-    - Siembra pistas sobre posibles conflictos o elementos misteriosos en la relación.
-    - Incorpora elementos o metáforas relacionadas con la canción '${track.name}' para enriquecer la narrativa.
-    - Incluye diálogos iniciales que muestren las interacciones entre los personajes.
-    - Muestra pensamientos internos de ${user.name} que revelen sus sentimientos y expectativas.
-    - Utiliza recuerdos o flashbacks que aporten contexto al pasado de ${user.name}.
-
-    Desarrollo (4 párrafos):
-    - Introduce un conflicto que afecta la relación entre ${user.name} y su interés amoroso.
-    - Muestra cómo los personajes secundarios influyen en la trama romántica.
-    - Incrementa la tensión y el suspenso a medida que los personajes enfrentan obstáculos.
-    - Profundiza en las dinámicas entre los personajes y sus motivaciones.
-    - Explora temas como el primer amor, los celos, la confianza y el autodescubrimiento.
-    - Continúa utilizando metáforas y referencias musicales de '${track.name}'.
-    - Incluye conversaciones y confrontaciones que reflejen el conflicto.
-    - Revela pensamientos internos y dudas que los personajes enfrentan.
-    - Incorpora recuerdos que expliquen reacciones o decisiones actuales.
-
-    Clímax con Giro Sorprendente (4 párrafos):
-    - Revela un giro inesperado que cambia drásticamente la dirección de la historia de amor.
-    - Involucra a los personajes secundarios de manera significativa en este giro.
-    - Aumenta el impacto emocional y obliga a los protagonistas a replantearse su relación.
-    - Intensifica el conflicto interno y externo, dejando al lector en suspenso.
-    - Asegúrate de que el giro sea sorprendente pero coherente con los elementos previamente establecidos.
-    - Incluye diálogos cargados de emoción que muestren la sorpresa y el dolor.
-    - Muestra pensamientos internos contradictorios y la lucha interna de los personajes.
-    - Utiliza recuerdos o revelaciones que aporten profundidad al giro.
-
-    Desenlace (4 párrafos):
-    - Muestra cómo ${user.name} y los demás personajes afrontan las consecuencias del giro.
-    - Resuelve parcialmente el conflicto principal, dejando algunos hilos sueltos.
-    - Destaca el crecimiento personal de los personajes y la evolución de su relación.
-    - Concluye con un final abierto que deje al lector reflexionando y deseando saber más.
-    - Refleja una transformación significativa en los personajes.
-    - Incluye diálogos finales que aporten esperanza o nuevas interrogantes.
-    - Muestra pensamientos internos de aceptación o determinación.
-    - Incorpora metáforas musicales que conecten el final con el tema de la canción '${track.name}'.
-
-    Consideraciones Generales:
-    - Utiliza un lenguaje descriptivo y evocador para crear imágenes vívidas.
-    - Asegúrate de que la historia fluya naturalmente entre las partes y párrafos.
-    - Combina narración, diálogos y pensamientos internos para enriquecer la experiencia del lector.
-    - Las conversaciones entre personajes deben ser auténticas y reflejar sus personalidades.
-    - Los pensamientos internos deben ofrecer una mirada profunda a sus emociones y conflictos.
-    - Los recuerdos o flashbacks deben aportar contexto y enriquecer la trama.
-    - Aborda temas como la identidad, las relaciones interpersonales y el crecimiento personal.
-    - Explora emociones complejas y situaciones comunes en la juventud.
-    - Incorpora elementos o metáforas relacionadas con la música y la canción '${track.name}' a lo largo de la historia.
-    - Utiliza la música como símbolo o reflejo de las emociones y situaciones de los personajes.
-    - Mantén un tono apropiado para novelas juveniles románticas, combinando romance, drama y un toque de comedia si es adecuado.
-    - Asegúrate de que los diálogos y pensamientos internos sean coherentes con la edad y personalidad de los personajes.
-
-    Recuerda que ${user.name} es el protagonista principal y la canción '${track.name}' debe ser un elemento central en la narrativa.`;
+    const prompt = `A continuación, escribe un capítulo de la novela ‘Travesuras de la niña mala’ que mantenga el estilo, con un tono nostálgico y melancólico por alguién si es protagonista es hombre ese alguien tiene que ser mujer y si es protagonista es mujer ese alguien tiene que ser hombre y el contexto puede ser actual es decir en estos años de la novela de Mario Vargas Llosa. 
+    El capítulo debe estar influenciado por el ambiente, ritmo y sensaciones propias del género,
+    el o la protagonista debe de llamarse ${user.name}, en lo posible el protagonista debe de tener como maximo 25 años, el capitulo debe de ser de 5 párrafos grandes por lo menos 3000 caracteres`;
 
     try {
         const response = await fetch('/generate-story', {
@@ -195,7 +130,7 @@ async function generateStory(track, user) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ prompt }),
+            body: JSON.stringify({ prompt, trackInfo: track }),
         });
 
         if (!response.ok) {
